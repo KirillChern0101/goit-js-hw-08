@@ -15,8 +15,6 @@ function handleFormInput() {
   };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
-window.addEventListener('load', formFields);
-
 function formFields() {
   const storedData = localStorage.getItem(STORAGE_KEY);
   if (storedData) {
@@ -28,12 +26,7 @@ function formFields() {
 
 formRef.addEventListener('submit', handleSubmit);
 function handleSubmit(event) {
-  event.preventDefault();
-
-  const formData = {
-    email: emailInput.value,
-    message: messageInput.value.trim(),
-  };
+  event.currentTarget.reset();
 
   localStorage.removeItem(STORAGE_KEY);
   emailInput.value = '';
